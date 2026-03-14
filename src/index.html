@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Representative Accountability Dashboard (Demo)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="max-w-6xl mx-auto p-6">
+
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">Representative Accountability Dashboard</h1>
+      <p class="text-gray-600">Concept demo showing how citizens could track the activity of their elected representatives.</p>
+    </header>
+
+    <!-- Selector -->
+    <div class="bg-white shadow rounded-2xl p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4">Select Representative</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <select id="state" class="border rounded-lg p-2">
+          <option>Uttar Pradesh</option>
+          <option>Maharashtra</option>
+          <option>Delhi</option>
+        </select>
+        <select id="constituency" class="border rounded-lg p-2">
+          <option>Example Nagar</option>
+          <option>Central City</option>
+          <option>River District</option>
+        </select>
+        <select id="role" class="border rounded-lg p-2">
+          <option>MLA</option>
+          <option>MP</option>
+          <option>Mayor</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Representative Info -->
+    <div class="bg-white shadow rounded-2xl p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4">Representative Information</h2>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div>
+          <p class="text-sm text-gray-500">Name</p>
+          <p class="font-medium">Sample Representative</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500">Position</p>
+          <p class="font-medium">Member of Legislative Assembly</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500">Party</p>
+          <p class="font-medium">Example Party</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500">Term</p>
+          <p class="font-medium">2022 – 2027</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Stats -->
+    <div class="grid md:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white shadow rounded-2xl p-4">
+        <p class="text-sm text-gray-500">Attendance</p>
+        <p class="text-2xl font-bold">82%</p>
+      </div>
+      <div class="bg-white shadow rounded-2xl p-4">
+        <p class="text-sm text-gray-500">Questions Asked</p>
+        <p class="text-2xl font-bold">45</p>
+      </div>
+      <div class="bg-white shadow rounded-2xl p-4">
+        <p class="text-sm text-gray-500">Debates</p>
+        <p class="text-2xl font-bold">12</p>
+      </div>
+      <div class="bg-white shadow rounded-2xl p-4">
+        <p class="text-sm text-gray-500">Projects Completed</p>
+        <p class="text-2xl font-bold">18</p>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="grid md:grid-cols-2 gap-6 mb-6">
+
+      <div class="bg-white shadow rounded-2xl p-6">
+        <h3 class="font-semibold mb-4">Development Fund Usage</h3>
+        <canvas id="fundChart"></canvas>
+      </div>
+
+      <div class="bg-white shadow rounded-2xl p-6">
+        <h3 class="font-semibold mb-4">Legislative Activity</h3>
+        <canvas id="activityChart"></canvas>
+      </div>
+
+    </div>
+
+    <!-- Project Table -->
+    <div class="bg-white shadow rounded-2xl p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4">Recent Development Projects</h2>
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="border-b">
+            <th class="py-2">Project</th>
+            <th>Status</th>
+            <th>Budget</th>
+            <th>Completion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="py-2">Road Repair - Ward 4</td>
+            <td>Completed</td>
+            <td>₹35 Lakh</td>
+            <td>100%</td>
+          </tr>
+          <tr class="border-b">
+            <td class="py-2">School Renovation</td>
+            <td>In Progress</td>
+            <td>₹20 Lakh</td>
+            <td>60%</td>
+          </tr>
+          <tr>
+            <td class="py-2">Water Pipeline</td>
+            <td>Completed</td>
+            <td>₹15 Lakh</td>
+            <td>100%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="text-sm text-gray-500">
+      Concept: A community-driven civic transparency dashboard. Data shown here is sample data for demonstration.
+    </footer>
+
+  </div>
+
+<script>
+
+const fundChart = new Chart(document.getElementById('fundChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Funds Utilized', 'Remaining Funds'],
+    datasets: [{
+      data: [320, 180],
+      backgroundColor: ['#16a34a','#e5e7eb']
+    }]
+  }
+});
+
+const activityChart = new Chart(document.getElementById('activityChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Questions', 'Debates', 'Committees'],
+    datasets: [{
+      label: 'Legislative Activity',
+      data: [45, 12, 5]
+    }]
+  }
+});
+
+</script>
+
+</body>
+</html>
